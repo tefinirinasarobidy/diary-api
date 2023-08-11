@@ -1,0 +1,7 @@
+npm init
+npm install sequelize sequelize-cli mysql2 
+npx sequelize-cli init
+create model and migration :npx sequelize-cli model:generate --name Message --attributes message:string
+npx sequelize-cli db:migrate
+npx sequelize-cli db:migrate:undo (rollback)
+alter table :npx sequelize-cli migration:generate --name add-columns
