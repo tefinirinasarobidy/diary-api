@@ -75,7 +75,10 @@ const getConversation = async (req,res) => {
                     model: MembreConversation ,
                     as: "whodiscut",
                     include: [{
-                        model:  db.User
+                        model:  db.User,
+                        attributes: {
+                            exclude: ['password']
+                        }
                     }]
                 }
             ]
