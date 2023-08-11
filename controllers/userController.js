@@ -75,13 +75,13 @@ const sendMail= (email,code) => {
         port: 465,
         secure: true,
         auth: {
-            user: 'fanomezantsoatefinirina@gmail.com',
+            user: 'Dsdsd@gmail.com',
             pass: 'fslpgmfhxtmqcxje'
         }
     });
     
     const mailOptions = {
-        from: 'fanomezantsoatefinirina@gmail.com',
+        from: 'sdsdsd@gmail.com',
         to: email,
         subject: 'Hello',
         text: 'code de validation compte',
