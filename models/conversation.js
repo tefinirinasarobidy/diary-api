@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Conversation.hasMany(models.MembreConversation,{foreignKey:'conversation_id'})
       Conversation.hasMany(models.Message,{foreignKey:'conversation_id'})
+      Conversation.hasOne(models.Message,{foreignKey:'conversation_id', as:'lastmessage'})
+      Conversation.hasOne(models.MembreConversation,{foreignKey:'conversation_id',as:'whodiscut'})
     }
   }
   Conversation.init({

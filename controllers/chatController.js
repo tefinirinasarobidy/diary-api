@@ -63,15 +63,20 @@ const getConversation = async (req,res) => {
             include:[
                 {
                     model: MembreConversation,
-                    where: {user_id: req.user.userId},
-                    required: false
+                    where: {user_id: req.user.userId}
                 },
                 {
-                    model:Message,
-                    limit:1,
+                    model:Message ,as: "lastmessage",
                     order: [
                         ['createdAt', 'DESC']
                     ]
+                },
+                {
+                    model: MembreConversation ,
+                    as: "whodiscut",
+                    include: [{
+                        model:  db.User
+                    }]
                 }
             ]
         })
