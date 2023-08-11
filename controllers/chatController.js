@@ -56,6 +56,31 @@ const createMessage = async (req, conversation_id) => {
     const message = await Message.create({ conversation_id, message: req.body.message, user_id: req.user.userId })
     return message
 }
+
+const getConversation = async (req,res) => {
+    try {
+        const conversations =await  Conversation.findAll({
+            include:[
+                {
+                    model: MembreConversation,
+                    where: {user_id: req.user.userId},
+                    required: false
+                },
+                {
+                    model:Message,
+                    limit:1,
+                    order: [
+                        ['createdAt', 'DESC']
+                    ]
+                }
+            ]
+        })
+        res.status(200).send(conversations)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+}
 module.exports = {
-    sendMessage
+    sendMessage,
+    getConversation
 }

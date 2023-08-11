@@ -11,4 +11,6 @@ router.post('/auth/login', userController.login)
 router.post('/event/create',auth, eventController.creatEvent)
 router.get('/event/all',auth, eventController.allEvents)
 router.post('/chat/send',auth, chatController.sendMessage)
+router.get('/chat/conversation',auth, chatController.getConversation)
+
 module.exports = router
